@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/print_photos', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         num_photos = request.form['num_photos']
