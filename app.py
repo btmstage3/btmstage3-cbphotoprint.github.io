@@ -1,25 +1,15 @@
-import cgi
+from flask import Flask, render_template, request
 
-# Get the form data
-form = cgi.FieldStorage()
-num_photos = form.getvalue('num_photos')
+app = Flask(__name__)
 
-# Generate the passport photos
-# ...
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        num_photos = request.form['num_photos']
+        # Call your Python function to generate the passport photos
+        return render_template('results.html', num_photos=num_photos)
+    else:
+        return render_template('index.html')
 
-# Output the results as an HTML response
-print("Content-type: text/html\n\n")
-print("<html>")
-print("<head>")
-print("<title>Passport Photo Results</title>")
-print("</head>")
-print("<body>")
-print("<h1>Passport Photo Results</h1>")
-print("<p>Number of photos printed: {0}</p>".format(num_photos))
-print("</body>")
-print("</html>")
- 
-
-
-
-
+if __name__ == '__main__':
+    app.run(debug=True)
