@@ -6,13 +6,23 @@
 <body>
 	<h1>Passport Photos</h1>
 	<form action="/print_photos" method="post">
-    <label for="num_photos">Select the number of photos to print:</label>
-    <select id="num_photos" name="num_photos">
-        <option value="8">8</option>
-        <option value="12">12</option>
-        <option value="16">16</option>
-    </select>
-    <button type="submit">Print Photos</button>
-    </form>
+	    <label for="num_photos">Select the number of photos to print:</label>
+	    <select id="num_photos" name="num_photos">
+	        <option value="8">8</option>
+	        <option value="12">12</option>
+	        <option value="16">16</option>
+	    </select>
+	    <br>
+	    <br>
+	    <label for="output_format">Select the output format:</label>
+	    <select id="output_format" name="output_format">
+	        <option value="pdf">PDF</option>
+	        <option value="jpeg">JPEG</option>
+	        <option value="png">PNG</option>
+	    </select>
+	    <br>
+	    <br>
+	    <button type="submit">Generate Photos</button>
+	</form>
 </body>
 </html>
