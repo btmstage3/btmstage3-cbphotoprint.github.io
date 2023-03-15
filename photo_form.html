@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Passport Photo Maker</title>
+</head>
+<body>
+	<h1>Passport Photo Maker</h1>
+	<form id="photo-form" method="POST">
+		<label for="photo-file">Select your photo:</label>
+		<input type="file" name="photo-file" id="photo-file">
+		<br>
+		<label for="num-photos">Select the number of photos to print:</label>
+		<select name="num-photos" id="num-photos">
+			<option value="8">8 photos (2x4 grid)</option>
+			<option value="12">12 photos (3x4 grid)</option>
+			<option value="16">16 photos (4x4 grid)</option>
+		</select>
+		<br>
+		<label for="output-format">Select output format:</label>
+		<select name="output-format" id="output-format">
+			<option value="png">PNG</option>
+			<option value="jpg">JPEG</option>
+			<option value="pdf">PDF</option>
+			<option value="docx">Word</option>
+		</select>
+		<br>
+		<input type="submit" value="Make passport photos">
+	</form>
+
+ 
+
+
+<script>
+    // When the form is submitted
+    document.getElementById("photo-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        // Get the selected input file
+        var input_file = document.getElementById("photo-file").files[0];
+        if (!input_file) {
+            alert("Please select an input file.");
+            return;
+        }
+        // Get the number of photos to print
+        var num_photos = document.getElementById("num-photos").value;
+        // Get the output format
+        var output_format = document.getElementById("output-format").value;
+        // Send the form data to the server to generate the passport photos
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/make_passport_photos");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                alert("Passport photos created successfully.");
+            } else {
+                alert("Failed to create passport photos.");
+            }
+        };
+        var data = {
+            "input_file": input_file,
+            "num_photos": num_photos,
+            "output_format": output_format
+        };
+        xhr.send(JSON.stringify(data));
+    });
+</script>
+
+</body>
+</html>
