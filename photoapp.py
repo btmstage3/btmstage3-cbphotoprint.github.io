@@ -165,19 +165,15 @@ def print_photos_post():
         create_passport_photo_sheet(int(num_photos), output_format)
     else:
         print("Please provide both number of photos and output format.")
-    # Call the create_passport_photo_sheet function with the retrieved values
-
-    # Call the create_passport_photo_sheet function with the retrieved values
-
-    # Use the retrieved value to perform the necessary logic
-    # ...
+   
+  
     # return 'Photos printed: ' + num_photos + "\t\t\t" + output_format
     # redirect to the initial page
     return redirect(url_for('index'))
 
 
 if __name__ == '__main__':
-    app.run(host='https://btmstage3.github.io/btmstage3-cbphotoprint.github.io/', debug=False)
+    app.run()
 
 
 
