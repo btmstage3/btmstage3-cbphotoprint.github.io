@@ -10,9 +10,10 @@ app = Flask(__name__, template_folder='')
 def index():
     return render_template('index.html')
 
+
 def create_passport_photo_sheet(num_photos: int, output_format: str):
     output_format2 = output_format
-    num_photos2:int = num_photos
+    num_photos2: int = num_photos
     # Create a file dialog box to select the input photo
     root = tk.Tk()
     root.withdraw()
@@ -154,23 +155,26 @@ def create_passport_photo_sheet(num_photos: int, output_format: str):
         # Save the output as an image file
         a4_image.save(output_file_path)
 
-  # redirect to the initial page
-    return redirect(url_for('index'))
-
-@app.route('https://btmstage3.github.io/print_photos', methods=['GET','POST'])
-def print_photos_post():
-    num_photos = request.form['num_photos']
-    output_format: str = request.form['output_format']
-    if num_photos and output_format:
-        create_passport_photo_sheet(int(num_photos), output_format)
-    else:
-        print("Please provide both number of photos and output format.")
-   
-  
-    # return 'Photos printed: ' + num_photos + "\t\t\t" + output_format
     # redirect to the initial page
     return redirect(url_for('index'))
 
+
+@app.route('https://btmstage3.github.io/print_photos', methods=['GET', 'POST'])
+def print_photos_post():
+    if request.method == 'POST':
+        num_photos = request.form['num_photos']
+        output_format: str = request.form['output_format']
+        if num_photos and output_format:
+            create_passport_photo_sheet(int(num_photos), output_format)
+        else:
+            print("Please provide both number of photos and output format.")
+
+    else:
+         print("Please provide both number of photos and output format.")
+
+# return 'Photos printed: ' + num_photos + "\t\t\t" + output_format
+# redirect to the initial page
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run()
