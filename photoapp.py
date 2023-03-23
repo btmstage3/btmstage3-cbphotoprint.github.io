@@ -17,6 +17,7 @@ def create_passport_photo_sheet(num_photos: int, output_format: str):
     # Create a file dialog box to select the input photo
     root = tk.Tk()
     root.withdraw()
+
     input_file_path = filedialog.askopenfilename(filetypes=[("JPEG files", "*.jpg")])
 
     # Open the input image file
@@ -159,7 +160,7 @@ def create_passport_photo_sheet(num_photos: int, output_format: str):
     return redirect(url_for('index'))
 
 
-@app.route('https://btmstage3.github.io/btmstage3-cbphotoprint.github.io/print_photos', methods=['GET', 'POST'])
+@app.route('/print_photos', methods=['GET', 'POST'])
 def print_photos_post():
     if request.method == 'POST':
         num_photos = request.form['num_photos']
@@ -177,7 +178,7 @@ def print_photos_post():
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    app.run()
-
+  #  app.run()
+    app.run(host='localhost', port=9874, debug=True)
 
 
