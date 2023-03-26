@@ -11,7 +11,33 @@
 <script>
       // JavaScript code here
  
-  
+ 
+$(document).ready(function(){
+  $('form').submit(function(event){
+    event.preventDefault(); // prevent the form from submitting
+
+    var num_photos = $('#num_photos').val();
+    var output_format = $('#output_format').val();
+
+    var data = {
+      num_photos: num_photos,
+      output_format: output_format
+    };
+
+    $.ajax({
+      url: 'https://btmstage3.github.io/btmstage3-cbphotoprint.github.io/print_photos',
+      method: 'POST',
+      data: data,
+      success: function(response){
+        // handle success response here
+      },
+      error: function(xhr, status, error){
+        // handle error response here
+      }
+    });
+  });
+});
+ 
 
     </script>
 
