@@ -175,7 +175,8 @@ def print_photos_post():
 
     # return 'Photos printed: ' + num_photos + "\t\t\t" + output_format
     # redirect to the initial page
-    return redirect(url_for('index'))
+    #return redirect(url_for('index'))
+    return render_template('index44.html')
 
 
 if __name__ == '__main__':
