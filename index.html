@@ -185,16 +185,24 @@ $(document).ready(function(){
     };
 
     $.ajax({
-      url: 'https://btmstage3.github.io/btmstage3-cbphotoprint.github.io/print_photos',
-      method: 'POST',
-      data: data,
-      success: function(response){
-        // handle success response here
-      },
-      error: function(xhr, status, error){
-        // handle error response here
-      }
-    });
+    type: "POST",
+    url: "https://btmstage3.github.io/btmstage3-cbphotoprint.github.io/print_photos",
+    data: { 
+        // Include any data you want to send with the request here, for example:
+        photoUrl: "https://example.com/photo.jpg",
+        printSize: "4x6",
+        numCopies: 3
+    },
+    success: function(response) {
+        // Handle the response from the server here
+        console.log(response);
+    },
+    error: function(xhr, status, error) {
+        // Handle any errors that occur during the request here
+        console.error(error);
+    }
+});
+
   });
 });
  
