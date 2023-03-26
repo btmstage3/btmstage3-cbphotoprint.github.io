@@ -6,7 +6,7 @@ from PIL import Image
 app = Flask(__name__, template_folder='')
 
 
-@app.route('/')
+@app.route('https://btmstage3.github.io/btmstage3-cbphotoprint.github.io/')
 def index():
     return render_template('index.html')
 
