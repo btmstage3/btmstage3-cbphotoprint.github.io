@@ -43,5 +43,7 @@ The tool will create two new files in the same directory as the input file, name
 License
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
+![Screenshot (7)](https://user-images.githubusercontent.com/73518245/227780958-57ccbfc8-3b78-4009-b2d6-09637419225f.png)
+
 Contact
 If you have any questions or suggestions about this tool, please feel free to contact me at [macromkarthick@gmail.com].
