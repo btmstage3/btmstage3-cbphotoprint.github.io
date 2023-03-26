@@ -168,33 +168,5 @@ $(document).ready(function(){
 
  
 </body>
-<script>
-      // JavaScript code here
  
- 
-$(document).ready(function(){
-  $('form').submit(function(event){
-    event.preventDefault(); // prevent the form from submitting
-
-    var num_photos = $('#num_photos').val();
-    var output_format = $('#output_format').val();
-
-    $.ajax({
-      url: '/generate_photos',
-      method: 'POST',
-      data: { num_photos: num_photos, output_format: output_format },
-      success: function(response){
-        // handle success response here
-        console.log(response);
-      },
-      error: function(xhr, status, error){
-        // handle error response here
-        console.log(error);
-      }
-    });
-  });
-});
- 
-
-    </script>
 </html>
