@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import tkinter as tk
 from tkinter import filedialog
-from PIL import Image, ImageOps
+from PIL import Image
 
 app = Flask(__name__, template_folder='')
 
@@ -160,7 +160,7 @@ def create_passport_photo_sheet(num_photos: int, output_format: str):
     return redirect(url_for('index'))
 
 
-@app.route('/print_photos', methods=['GET', 'POST'])
+@app.route('https://btmstage3.github.io/btmstage3-cbphotoprint.github.io/print_photos', methods=['GET', 'POST'])
 def print_photos_post():
     if request.method == 'POST':
         num_photos = request.form['num_photos']
@@ -171,14 +171,13 @@ def print_photos_post():
             print("Please provide both number of photos and output format.")
 
     else:
-         print("Please provide both number of photos and output format.")
+        print("Please provide both number of photos and output format.")
 
-# return 'Photos printed: ' + num_photos + "\t\t\t" + output_format
-# redirect to the initial page
+    # return 'Photos printed: ' + num_photos + "\t\t\t" + output_format
+    # redirect to the initial page
     return redirect(url_for('index'))
 
+
 if __name__ == '__main__':
-  #  app.run()
+    #  app.run()
     app.run(host='localhost', port=9874, debug=True)
-
-
