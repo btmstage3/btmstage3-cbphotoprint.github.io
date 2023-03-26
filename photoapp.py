@@ -18,7 +18,7 @@ def create_passport_photo_sheet(num_photos: int, output_format: str):
     root = tk.Tk()
     root.withdraw()
 
-    input_file_path = filedialog.askopenfilename(filetypes=[("JPEG files", "*.jpg")])
+    input_file_path = filedialog.askopenfilename(title="Select file", filetypes=[("JPEG files", "*.jpg"), ("PNG files", "*.png")])
 
     # Open the input image file
     input_image = Image.open(input_file_path)
