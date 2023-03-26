@@ -1,4 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for
+import os
+
+from flask import Flask, redirect, url_for, render_template
 import tkinter as tk
 from tkinter import filedialog
 from PIL import Image
@@ -8,9 +10,12 @@ app = Flask(__name__, template_folder='')
 
 @app.route('/')
 def index():
-    return render_template('index.html')
     num_photos = 20
     output_format = 'PNG'
+    if num_photos and output_format:
+        create_passport_photo_sheet(int(num_photos), output_format)
+        return render_template('index44.html')
+
 
 def create_passport_photo_sheet(num_photos: int, output_format: str):
     output_format2 = output_format
@@ -160,24 +165,6 @@ def create_passport_photo_sheet(num_photos: int, output_format: str):
     # redirect to the initial page
     return redirect(url_for('index'))
 
-
-@app.route('/print_photos', methods=['GET', 'POST'])
-def print_photos_post():
-    if request.method == 'POST':
-        num_photos = 20
-        output_format = 'PNG'
-
-        if num_photos and output_format:
-            create_passport_photo_sheet(int(num_photos), output_format)
-        else:
-            print("Please provide both number of photos and output format.")
-
-    else:
-        print("Please provide both number of photos and output format.")
-
-    # return 'Photos printed: ' + num_photos + "\t\t\t" + output_format
-    # redirect to the initial page
-    return redirect(url_for('index'))
 
 
 if __name__ == '__main__':
